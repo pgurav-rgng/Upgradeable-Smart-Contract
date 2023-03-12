@@ -21,19 +21,22 @@ contract VendingMachineV2 is Initializable {
     }
 
     function withdrawProfits() public onlyOwner {
+        // onlyOwner is a modifier that we will define below the contract
         require(
             address(this).balance > 0,
             "Profits must be greater than 0 in order to withdraw!"
         );
-        (bool sent, ) = owner.call{value: address(this).balance}("");
+        (bool sent, ) = owner.call{value: address(this).balance}(""); // this is the contract's balance
         require(sent, "Failed to send ether");
     }
 
     function setNewOwner(address _newOwner) public onlyOwner {
-        owner = _newOwner;
+        // onlyOwner is a modifier that we will define below the contract
+        owner = _newOwner; // this is a state variable that we will define below the contract
     }
 
     modifier onlyOwner() {
+        // this is a modifier that we can use to restrict access to certain functions
         require(msg.sender == owner, "Only owner can call this function.");
         _;
     }
