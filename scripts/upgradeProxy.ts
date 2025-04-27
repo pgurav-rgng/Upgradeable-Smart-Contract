@@ -1,6 +1,6 @@
 const { ethers, upgrades } = require('hardhat');
 
-const proxyAddress = '0xe202Cd6b97f4F584B39d56B93F95d288dfa0448A'; // This is the address of the proxy contract
+const proxyAddress = "0xFce889403984aabAd0174BA588B898077fC77583"; // This is the address of the proxy contract
 
 async function main() {
 	const VendingMachineV2 = await ethers.getContractFactory('VendingMachineV2');
